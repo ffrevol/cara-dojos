@@ -12,7 +12,7 @@ import org.junit.Test;
 public class CashRegisterTest {
 
   @Test
-  public void balanceWithNotEnoughMoney() {
+  public void balanceWithNotEnoughMoneyOffered() {
     // Given
     Float totalProductsCost = 50.0f;
     Float offeredPayment = 30.0f;
