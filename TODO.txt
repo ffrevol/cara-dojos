@@ -6,5 +6,6 @@
   * DONE balance: offered currency value - total amount to pay
   * change: currency value to denominations from available denominations
     * change: get denoms matching due amounts from available denoms
+      * order denoms: comparable
       * DONE: Cash register: available denominations
   * removes changes from cash machine + add payments
