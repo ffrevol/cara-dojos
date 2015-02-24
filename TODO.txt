@@ -1,0 +1,9 @@
+* payment: cart, denominations -> payment status
+  * cart (N merchandises) to total amount
+    * merchandise (unit price)
+  * DONE Denominations (notes/coins) to currency value
+      * DONE Model Denominations: notes/coins
+  * DONE balance: offered currency value - total amount to pay
+  * change: currency value to denominations from available denominations
+      * Cash register: available denominations
+
