@@ -12,7 +12,7 @@ import org.junit.Test;
 public class CashRegisterTest {
 
   @Test
-  public void balanceWithNotEnoughMoneyOffered() {
+  public void compute_balance_when_Not_Enough_Money_Offered() {
     // Given
     Float totalProductsCost = 50.0f;
     Float offeredPayment = 30.0f;
@@ -25,7 +25,7 @@ public class CashRegisterTest {
   }
 
   @Test (expected=InsuffisantMoneyException.class)
-  public void rejectPaymentIfNotEnoughMoney() throws InsuffisantMoneyException
+  public void rejects_Payment_If_Not_EnoughMoney() throws InsuffisantMoneyException
   {
     // Given
     Float balance = -50.0f;
@@ -35,7 +35,7 @@ public class CashRegisterTest {
   }
 
   @Test
-  public void acceptPaymentIfEnoughMoney() throws InsuffisantMoneyException
+  public void accepts_Payment_If_Enough_Money() throws InsuffisantMoneyException
   {
     // Given
     Float balance = 40.0f;
@@ -47,7 +47,7 @@ public class CashRegisterTest {
   }
 
   @Test
-  public void acceptPaymentIfJustEnoughMoney() throws InsuffisantMoneyException
+  public void accepts_Payment_If_Just_Enough_Money() throws InsuffisantMoneyException
   {
     // Given
     Float balance = 0.0f;
