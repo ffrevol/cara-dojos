@@ -1,8 +1,5 @@
 package org.cara.dojo;
 
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -125,7 +122,7 @@ public class CashRegisterTest {
     List<Denomination> denoms = Arrays.asList(Denomination.PENNY, Denomination.PENNY, Denomination.TWENTY);
 
     // When
-    Float amount = account(denoms);
+    Float amount = cashRegister.account(denoms);
 
     // Then
     Assertions.assertThat(amount).isEqualTo(20.02f);
@@ -140,19 +137,10 @@ public class CashRegisterTest {
     List<Denomination> denoms = Arrays.asList(Denomination.PENNY, Denomination.QUARTER, Denomination.TWENTY);
 
     // When
-    Float amount = account(denoms);
+    Float amount = cashRegister.account(denoms);
 
     // Then
     Assertions.assertThat(amount).isEqualTo(20.26f);
-  }
-
-  private Float account(List<Denomination> denoms) {
-    float totalAmount = 0.0f;
-    for (Denomination denomination : denoms) {
-      totalAmount += denomination.amount();
-    }
-
-    return totalAmount;
   }
 
   private Float makePayment(Float totalProducts, Float payment) throws InsuffisantMoneyException {
