@@ -12,6 +12,19 @@ import org.junit.Test;
 public class CashRegisterTest {
 
   @Test
+  public void compute_balance_with_just_Enough_Money() {
+    // Given
+    Float totalProducts = 50.0f;
+    Float payment = 50.0f;
+
+    // When
+    Float balance = getBalance(totalProducts, payment);
+
+    // Then
+    Assertions.assertThat(balance).isEqualTo(0.0f);
+  }
+
+  @Test
   public void compute_balance_when_Not_Enough_Money_Offered() {
     // Given
     Float totalProductsCost = 50.0f;
@@ -22,6 +35,19 @@ public class CashRegisterTest {
 
     // Then
     Assertions.assertThat(balance).isEqualTo(-20.0f);
+  }
+
+  @Test
+  public void compute_balance_when_too_Much_Money() {
+    // Given
+    Float totalProducts = 50.0f;
+    Float payment = 80.0f;
+
+    // When
+    Float balance = getBalance(totalProducts, payment);
+
+    // Then
+    Assertions.assertThat(balance).isEqualTo(30.0f);
   }
 
   @Test (expected=InsuffisantMoneyException.class)
@@ -97,6 +123,8 @@ public class CashRegisterTest {
     Assertions.assertThat(amount).isEqualTo(20.02f);
   }
 
+
+
   @Test
   public void count_currency_from_list_of_denominations_20_26()
   {
@@ -109,21 +137,6 @@ public class CashRegisterTest {
     // Then
     Assertions.assertThat(amount).isEqualTo(20.26f);
   }
-
-  @Test
-  public void justEnoughMoney() {
-    // Given
-    Float totalProducts = 50.0f;
-    Float payment = 50.0f;
-
-    // When
-    Float balance = getBalance(totalProducts, payment);
-
-    // Then
-    Assertions.assertThat(balance).isEqualTo(0.0f);
-  }
-
-
 
   private Float account(List<Denomination> denoms) {
     float totalAmount = 0.0f;
@@ -144,19 +157,6 @@ public class CashRegisterTest {
     if(balance <0.0f) {
       throw new InsuffisantMoneyException();
     }
-  }
-
-  @Test
-  public void tooMuchMoney() {
-    // Given
-    Float totalProducts = 50.0f;
-    Float payment = 80.0f;
-
-    // When
-    Float balance = getBalance(totalProducts, payment);
-
-    // Then
-    Assertions.assertThat(balance).isEqualTo(30.0f);
   }
 
 
