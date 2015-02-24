@@ -7,4 +7,4 @@
   * change: currency value to denominations from available denominations
     * change: get denoms matching due amounts from available denoms
       * DONE: Cash register: available denominations
-
+  * removes changes from cash machine + add payments
