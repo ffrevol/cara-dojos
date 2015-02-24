@@ -1,5 +1,6 @@
 package org.cara.dojo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -42,6 +43,6 @@ public class CashRegister {
     }
 
     public List<Denomination> getChangeForPayment(Float totalRequestedAmountForProducts, List<Denomination> offeredPaymentDenoms) {
-        return null;
+        return new ArrayList<Denomination>();
     }
 }
