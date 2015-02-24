@@ -29,7 +29,7 @@ public class CashRegisterTest {
   }
 
   @Test
-  public void returns_single_20_when_extra() {
+  public void returns_single_20_when_extra_bill_exactly_matches_expected_change() {
     // Given
     Float totalRequested = 20.0f;
     List<Denomination> offeredPaymentDenoms = Arrays.asList(Denomination.TWENTY, Denomination.TWENTY);
