@@ -7,7 +7,7 @@ import java.util.List;
  *
  */
 public class CashRegister {
-    private List<?> denoms;
+    private List<Denomination> denoms;
 
     Float account(List<Denomination> denoms) {
       float totalAmount = 0.0f;
@@ -58,6 +58,6 @@ public class CashRegister {
     }
 
     public List<Denomination> getChangeAsDenoms(Float dueChange) {
-        return null;
+        return denoms;
     }
 }

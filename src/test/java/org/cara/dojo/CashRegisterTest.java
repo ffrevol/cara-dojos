@@ -7,6 +7,7 @@ import org.fest.assertions.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 
+import static java.util.Arrays.asList;
 import static org.fest.assertions.Assertions.assertThat;
 
 public class CashRegisterTest {
@@ -22,33 +23,34 @@ public class CashRegisterTest {
   public void returns_no_change_when_exact_payment_offered() {
     // Given
     Float totalProducts = 20.0f;
-    List<Denomination> offeredPaymentDenoms = Arrays.asList(Denomination.TWENTY);
+    List<Denomination> offeredPaymentDenoms = asList(Denomination.TWENTY);
 
     //when
     List<Denomination> resultingChange = cashRegister.getChangeForPayment(totalProducts, offeredPaymentDenoms);
 
-    assertThat(resultingChange).isEqualTo(Arrays.asList());
+    assertThat(resultingChange).isEqualTo(asList());
   }
 
   @Test
   public void get_denoms_matching_due_change_from_available_denoms_in_register() {
+    cashRegister.init(asList(Denomination.TWENTY, Denomination.FIVE));
     Float due = 25f;
 
     List<Denomination> changeAsDenoms = cashRegister.getChangeAsDenoms(due);
 
-    assertThat(changeAsDenoms).isEqualTo(Arrays.asList(Denomination.TWENTY, Denomination.FIVE));
+    assertThat(changeAsDenoms).isEqualTo(asList(Denomination.TWENTY, Denomination.FIVE));
   }
 
   @Test
   public void returns_single_20_when_extra_bill_exactly_matches_expected_change() {
     // Given
     Float totalRequested = 20.0f;
-    List<Denomination> offeredPaymentDenoms = Arrays.asList(Denomination.TWENTY, Denomination.TWENTY);
+    List<Denomination> offeredPaymentDenoms = asList(Denomination.TWENTY, Denomination.TWENTY);
 
     //when
     List<Denomination> resultingChange = cashRegister.getChangeForPayment(totalRequested, offeredPaymentDenoms);
 
-    assertThat(resultingChange).isEqualTo(Arrays.asList(Denomination.TWENTY));
+    assertThat(resultingChange).isEqualTo(asList(Denomination.TWENTY));
   }
 
 
@@ -156,7 +158,7 @@ public class CashRegisterTest {
   public void count_currency_from_list_of_denominations_20_02()
   {
     // Given
-    List<Denomination> denoms = Arrays.asList(Denomination.PENNY, Denomination.PENNY, Denomination.TWENTY);
+    List<Denomination> denoms = asList(Denomination.PENNY, Denomination.PENNY, Denomination.TWENTY);
 
     // When
     Float amount = cashRegister.account(denoms);
@@ -171,7 +173,7 @@ public class CashRegisterTest {
   public void count_currency_from_list_of_denominations_20_26()
   {
     // Given
-    List<Denomination> denoms = Arrays.asList(Denomination.PENNY, Denomination.QUARTER, Denomination.TWENTY);
+    List<Denomination> denoms = asList(Denomination.PENNY, Denomination.QUARTER, Denomination.TWENTY);
 
     // When
     Float amount = cashRegister.account(denoms);
@@ -183,7 +185,7 @@ public class CashRegisterTest {
   @Test
   public void init_cashregister_with_denoms() {
     // Given
-    List<Denomination> denoms = Arrays.asList(Denomination.PENNY, Denomination.QUARTER, Denomination.TWENTY);
+    List<Denomination> denoms = asList(Denomination.PENNY, Denomination.QUARTER, Denomination.TWENTY);
 
     // When
     cashRegister.init(denoms);
