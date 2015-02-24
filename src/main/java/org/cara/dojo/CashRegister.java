@@ -43,6 +43,14 @@ public class CashRegister {
     }
 
     public List<Denomination> getChangeForPayment(Float totalRequestedAmountForProducts, List<Denomination> offeredPaymentDenoms) {
-        return new ArrayList<Denomination>();
+        Float dueChange = getPaymentBalance(totalRequestedAmountForProducts, account(offeredPaymentDenoms));
+        ArrayList<Denomination> change = new ArrayList<Denomination>();
+        for (Denomination offeredPaymentDenom : offeredPaymentDenoms) {
+            if (dueChange - offeredPaymentDenom.amount() < 0.10f) {
+                change.add(offeredPaymentDenom);
+                break;
+            }
+        }
+        return change;
     }
 }
