@@ -32,8 +32,18 @@ public class CashRegisterTest {
   }
 
   @Test
-  public void get_denoms_matching_due_change_from_available_denoms_in_register() {
+  public void get_denoms_matching_due_change_from_available_denoms_in_register_25() {
     cashRegister.init(asList(Denomination.TWENTY, Denomination.FIVE));
+    Float due = 25f;
+
+    List<Denomination> changeAsDenoms = cashRegister.getChangeAsDenoms(due);
+
+    assertThat(changeAsDenoms).isEqualTo(asList(Denomination.TWENTY, Denomination.FIVE));
+  }
+
+  @Test
+  public void get_denoms_matching_due_change_from_available_denoms_in_register_31() {
+    cashRegister.init(asList(Denomination.TWENTY, Denomination.FIVE, Denomination.FIVE, Denomination.ONE));
     Float due = 25f;
 
     List<Denomination> changeAsDenoms = cashRegister.getChangeAsDenoms(due);
