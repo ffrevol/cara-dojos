@@ -40,4 +40,8 @@ public class CashRegister {
     public List<?> getDenoms() {
         return denoms;
     }
+
+    public List<Denomination> getChangeForPayment(Float totalRequestedAmountForProducts, List<Denomination> offeredPaymentDenoms) {
+        return null;
+    }
 }

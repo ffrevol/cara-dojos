@@ -17,6 +17,19 @@ public class CashRegisterTest {
   }
 
   @Test
+  public void change_when_exact_payment() {
+    // Given
+    Float totalProducts = 50.0f;
+    Float payment = 50.0f;
+    List<Denomination> offeredPaymentDenoms = Arrays.asList(Denomination.PENNY, Denomination.PENNY, Denomination.TWENTY);
+
+    //when
+    List<Denomination> resultingChange = cashRegister.getChangeForPayment(totalProducts, offeredPaymentDenoms);
+
+    Assertions.assertThat(resultingChange).isEqualTo(Arrays.asList());
+  }
+
+  @Test
   public void compute_balance_with_just_Enough_Money() {
     // Given
     Float totalProducts = 50.0f;
