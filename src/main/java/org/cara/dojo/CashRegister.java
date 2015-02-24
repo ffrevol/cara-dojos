@@ -33,8 +33,8 @@ public class CashRegister {
         return balance;
     }
 
-    public Float init(List<Denomination> denoms) {
-        return null;
+    public void init(List<Denomination> denoms) {
+        this.denoms = denoms;
     }
 
     public List<?> getDenoms() {

@@ -149,7 +149,7 @@ public class CashRegisterTest {
     List<Denomination> denoms = Arrays.asList(Denomination.PENNY, Denomination.QUARTER, Denomination.TWENTY);
 
     // When
-    Float amount = cashRegister.init(denoms);
+    cashRegister.init(denoms);
 
     // Then
     Assertions.assertThat(cashRegister.getDenoms()).isEqualTo(denoms);
