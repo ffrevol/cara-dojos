@@ -56,4 +56,8 @@ public class CashRegister {
         }
         return change;
     }
+
+    public List<Denomination> getChangeAsDenoms(Float dueChange) {
+        return null;
+    }
 }

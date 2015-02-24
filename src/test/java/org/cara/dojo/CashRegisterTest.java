@@ -7,6 +7,8 @@ import org.fest.assertions.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.fest.assertions.Assertions.assertThat;
+
 public class CashRegisterTest {
 
   private CashRegister cashRegister;
@@ -25,7 +27,16 @@ public class CashRegisterTest {
     //when
     List<Denomination> resultingChange = cashRegister.getChangeForPayment(totalProducts, offeredPaymentDenoms);
 
-    Assertions.assertThat(resultingChange).isEqualTo(Arrays.asList());
+    assertThat(resultingChange).isEqualTo(Arrays.asList());
+  }
+
+  @Test
+  public void get_denoms_matching_due_change_from_available_denoms_in_register() {
+    Float due = 25f;
+
+    List<Denomination> changeAsDenoms = cashRegister.getChangeAsDenoms(due);
+
+    assertThat(changeAsDenoms).isEqualTo(Arrays.asList(Denomination.TWENTY, Denomination.FIVE));
   }
 
   @Test
@@ -37,7 +48,7 @@ public class CashRegisterTest {
     //when
     List<Denomination> resultingChange = cashRegister.getChangeForPayment(totalRequested, offeredPaymentDenoms);
 
-    Assertions.assertThat(resultingChange).isEqualTo(Arrays.asList(Denomination.TWENTY));
+    assertThat(resultingChange).isEqualTo(Arrays.asList(Denomination.TWENTY));
   }
 
 
@@ -52,7 +63,7 @@ public class CashRegisterTest {
     Float balance = cashRegister.getPaymentBalance(totalProducts, payment);
 
     // Then
-    Assertions.assertThat(balance).isEqualTo(0.0f);
+    assertThat(balance).isEqualTo(0.0f);
   }
 
   @Test
@@ -65,7 +76,7 @@ public class CashRegisterTest {
     Float balance = cashRegister.getPaymentBalance(totalProductsCost, offeredPayment);
 
     // Then
-    Assertions.assertThat(balance).isEqualTo(-20.0f);
+    assertThat(balance).isEqualTo(-20.0f);
   }
 
   @Test
@@ -78,7 +89,7 @@ public class CashRegisterTest {
     Float balance = cashRegister.getPaymentBalance(totalProducts, payment);
 
     // Then
-    Assertions.assertThat(balance).isEqualTo(30.0f);
+    assertThat(balance).isEqualTo(30.0f);
   }
 
   @Test (expected=InsuffisantMoneyException.class)
@@ -125,7 +136,7 @@ public class CashRegisterTest {
     // When
     Float change = cashRegister.makePayment(totalProducts, payment);
     // Then
-    Assertions.assertThat(change).isEqualTo(10.0f);
+    assertThat(change).isEqualTo(10.0f);
   }
 
   @Test
@@ -136,9 +147,9 @@ public class CashRegisterTest {
       Denomination twenty = Denomination.TWENTY;
 
       // When Then
-      Assertions.assertThat(penny.amount()).isEqualTo(0.01f);
-      Assertions.assertThat(quarter.amount()).isEqualTo(0.25f);
-      Assertions.assertThat(twenty.amount()).isEqualTo(20f);
+      assertThat(penny.amount()).isEqualTo(0.01f);
+      assertThat(quarter.amount()).isEqualTo(0.25f);
+      assertThat(twenty.amount()).isEqualTo(20f);
   }
 
   @Test
@@ -151,7 +162,7 @@ public class CashRegisterTest {
     Float amount = cashRegister.account(denoms);
 
     // Then
-    Assertions.assertThat(amount).isEqualTo(20.02f);
+    assertThat(amount).isEqualTo(20.02f);
   }
 
 
@@ -166,7 +177,7 @@ public class CashRegisterTest {
     Float amount = cashRegister.account(denoms);
 
     // Then
-    Assertions.assertThat(amount).isEqualTo(20.26f);
+    assertThat(amount).isEqualTo(20.26f);
   }
 
   @Test
@@ -178,7 +189,7 @@ public class CashRegisterTest {
     cashRegister.init(denoms);
 
     // Then
-    Assertions.assertThat(cashRegister.getDenoms()).isEqualTo(denoms);
+    assertThat(cashRegister.getDenoms()).isEqualTo(denoms);
   }
 
 
