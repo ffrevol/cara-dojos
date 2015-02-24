@@ -59,6 +59,19 @@ public class CashRegisterTest {
   }
 
   @Test
+  public void acceptedPaymentReturnsChangeAmount() throws InsuffisantMoneyException
+  {
+    // Given
+    Float totalProducts = 50.0f;
+    Float payment = 60.0f;
+
+    // When
+    Float change = makePayment(totalProducts, payment);
+    // Then
+    Assertions.assertThat(change).isEqualTo(10.0f);
+  }
+
+  @Test
   public void express_denomination_and_currency_value() throws Exception {
       //Given
       Denomination penny = Denomination.PENNY;
@@ -72,7 +85,7 @@ public class CashRegisterTest {
   }
 
   @Test
-  public void count_currency_from_list_of_denominations()
+  public void count_currency_from_list_of_denominations_20_02()
   {
     // Given
     List<Denomination> denoms = Arrays.asList(Denomination.PENNY, Denomination.PENNY, Denomination.TWENTY);
@@ -85,7 +98,7 @@ public class CashRegisterTest {
   }
 
   @Test
-  public void countDenomination01()
+  public void count_currency_from_list_of_denominations_20_26()
   {
     // Given
     List<Denomination> denoms = Arrays.asList(Denomination.PENNY, Denomination.QUARTER, Denomination.TWENTY);
@@ -95,42 +108,6 @@ public class CashRegisterTest {
 
     // Then
     Assertions.assertThat(amount).isEqualTo(20.26f);
-  }
-
-  private Float account(List<Denomination> denoms) {
-    float totalAmount = 0.0f;
-    for (Denomination denomination : denoms) {
-      totalAmount += denomination.amount();
-    }
-
-    return totalAmount;
-  }
-
-  @Test
-  public void acceptedPaymentReturnsChangeAmount() throws InsuffisantMoneyException
-  {
-    // Given
-    Float totalProducts = 50.0f;
-    Float payment = 60.0f;
-
-    // When
-    Float change = makePayment(totalProducts, payment);
-    // Then
-    Assertions.assertThat(change).isEqualTo(10.0f);
-  }
-
-
-
-  private Float makePayment(Float totalProducts, Float payment) throws InsuffisantMoneyException {
-      Float balance = getBalance(totalProducts, payment);
-      checkBalance(balance);
-      return balance;
-  }
-
-  private void checkBalance(Float balance) throws InsuffisantMoneyException {
-    if(balance <0.0f) {
-      throw new InsuffisantMoneyException();
-    }
   }
 
   @Test
@@ -144,6 +121,29 @@ public class CashRegisterTest {
 
     // Then
     Assertions.assertThat(balance).isEqualTo(0.0f);
+  }
+
+
+
+  private Float account(List<Denomination> denoms) {
+    float totalAmount = 0.0f;
+    for (Denomination denomination : denoms) {
+      totalAmount += denomination.amount();
+    }
+
+    return totalAmount;
+  }
+
+  private Float makePayment(Float totalProducts, Float payment) throws InsuffisantMoneyException {
+      Float balance = getBalance(totalProducts, payment);
+      checkBalance(balance);
+      return balance;
+  }
+
+  private void checkBalance(Float balance) throws InsuffisantMoneyException {
+    if(balance <0.0f) {
+      throw new InsuffisantMoneyException();
+    }
   }
 
   @Test
