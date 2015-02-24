@@ -40,6 +40,8 @@ public class CashRegisterTest {
     Assertions.assertThat(resultingChange).isEqualTo(Arrays.asList(Denomination.TWENTY));
   }
 
+
+
   @Test
   public void compute_balance_with_just_Enough_Money() {
     // Given
