@@ -23,7 +23,7 @@ public class CashRegisterTest {
     Float payment = 50.0f;
 
     // When
-    Float balance = getBalance(totalProducts, payment);
+    Float balance = cashRegister.getBalance(totalProducts, payment);
 
     // Then
     Assertions.assertThat(balance).isEqualTo(0.0f);
@@ -36,7 +36,7 @@ public class CashRegisterTest {
     Float offeredPayment = 30.0f;
 
     // When
-    Float balance = getBalance(totalProductsCost, offeredPayment);
+    Float balance = cashRegister.getBalance(totalProductsCost, offeredPayment);
 
     // Then
     Assertions.assertThat(balance).isEqualTo(-20.0f);
@@ -49,7 +49,7 @@ public class CashRegisterTest {
     Float payment = 80.0f;
 
     // When
-    Float balance = getBalance(totalProducts, payment);
+    Float balance = cashRegister.getBalance(totalProducts, payment);
 
     // Then
     Assertions.assertThat(balance).isEqualTo(30.0f);
@@ -62,7 +62,7 @@ public class CashRegisterTest {
     Float balance = -50.0f;
 
     // When
-    checkBalance(balance);
+    cashRegister.checkBalance(balance);
   }
 
   @Test
@@ -72,7 +72,7 @@ public class CashRegisterTest {
     Float balance = 40.0f;
 
     // When
-    checkBalance(balance);
+    cashRegister.checkBalance(balance);
 
     // Then
   }
@@ -84,7 +84,7 @@ public class CashRegisterTest {
     Float balance = 0.0f;
 
     // When
-    checkBalance(balance);
+    cashRegister.checkBalance(balance);
 
     // Then
   }
@@ -97,7 +97,7 @@ public class CashRegisterTest {
     Float payment = 60.0f;
 
     // When
-    Float change = makePayment(totalProducts, payment);
+    Float change = cashRegister.makePayment(totalProducts, payment);
     // Then
     Assertions.assertThat(change).isEqualTo(10.0f);
   }
@@ -143,21 +143,5 @@ public class CashRegisterTest {
     Assertions.assertThat(amount).isEqualTo(20.26f);
   }
 
-  private Float makePayment(Float totalProducts, Float payment) throws InsuffisantMoneyException {
-      Float balance = getBalance(totalProducts, payment);
-      checkBalance(balance);
-      return balance;
-  }
 
-  private void checkBalance(Float balance) throws InsuffisantMoneyException {
-    if(balance <0.0f) {
-      throw new InsuffisantMoneyException();
-    }
-  }
-
-
-
-  private Float getBalance(Float totalProducts, Float payment) {
-    return payment - totalProducts;
-  }
 }
