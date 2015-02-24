@@ -23,7 +23,7 @@ public class CashRegisterTest {
     Float payment = 50.0f;
 
     // When
-    Float balance = cashRegister.getBalance(totalProducts, payment);
+    Float balance = cashRegister.getPaymentBalance(totalProducts, payment);
 
     // Then
     Assertions.assertThat(balance).isEqualTo(0.0f);
@@ -36,7 +36,7 @@ public class CashRegisterTest {
     Float offeredPayment = 30.0f;
 
     // When
-    Float balance = cashRegister.getBalance(totalProductsCost, offeredPayment);
+    Float balance = cashRegister.getPaymentBalance(totalProductsCost, offeredPayment);
 
     // Then
     Assertions.assertThat(balance).isEqualTo(-20.0f);
@@ -49,7 +49,7 @@ public class CashRegisterTest {
     Float payment = 80.0f;
 
     // When
-    Float balance = cashRegister.getBalance(totalProducts, payment);
+    Float balance = cashRegister.getPaymentBalance(totalProducts, payment);
 
     // Then
     Assertions.assertThat(balance).isEqualTo(30.0f);
@@ -62,7 +62,7 @@ public class CashRegisterTest {
     Float balance = -50.0f;
 
     // When
-    cashRegister.checkBalance(balance);
+    cashRegister.checkBalanceToProceedWithPayment(balance);
   }
 
   @Test
@@ -72,7 +72,7 @@ public class CashRegisterTest {
     Float balance = 40.0f;
 
     // When
-    cashRegister.checkBalance(balance);
+    cashRegister.checkBalanceToProceedWithPayment(balance);
 
     // Then
   }
@@ -84,7 +84,7 @@ public class CashRegisterTest {
     Float balance = 0.0f;
 
     // When
-    cashRegister.checkBalance(balance);
+    cashRegister.checkBalanceToProceedWithPayment(balance);
 
     // Then
   }

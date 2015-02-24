@@ -17,19 +17,19 @@ public class CashRegister {
       return totalAmount;
     }
 
-    Float getBalance(Float totalProducts, Float payment) {
+    Float getPaymentBalance(Float totalProducts, Float payment) {
       return payment - totalProducts;
     }
 
-    void checkBalance(Float balance) throws InsuffisantMoneyException {
+    void checkBalanceToProceedWithPayment(Float balance) throws InsuffisantMoneyException {
       if(balance <0.0f) {
         throw new InsuffisantMoneyException();
       }
     }
 
     Float makePayment(Float totalProducts, Float payment) throws InsuffisantMoneyException {
-        Float balance = getBalance(totalProducts, payment);
-        checkBalance(balance);
+        Float balance = getPaymentBalance(totalProducts, payment);
+        checkBalanceToProceedWithPayment(balance);
         return balance;
     }
 

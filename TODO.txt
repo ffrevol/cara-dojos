@@ -5,5 +5,5 @@
       * DONE Model Denominations: notes/coins
   * DONE balance: offered currency value - total amount to pay
   * change: currency value to denominations from available denominations
-      * Cash register: available denominations
+      * DONE: Cash register: available denominations
 
