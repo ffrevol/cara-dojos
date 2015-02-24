@@ -32,7 +32,7 @@ public class CashRegisterTest {
   }
 
   @Test
-  public void get_denoms_matching_due_change_from_available_denoms_in_register_25() {
+  public void get_change_denoms_change_25_cash_20_5() {
     cashRegister.init(asList(Denomination.TWENTY, Denomination.FIVE));
     Float due = 25f;
 
@@ -42,7 +42,7 @@ public class CashRegisterTest {
   }
 
   @Test
-  public void get_denoms_matching_due_change_from_available_denoms_in_register_31() {
+  public void get_change_denoms_change_25_cash_20_5_5_1() {
     cashRegister.init(asList(Denomination.TWENTY, Denomination.FIVE, Denomination.FIVE, Denomination.ONE));
     Float due = 25f;
 
