@@ -6,6 +6,8 @@ import java.util.List;
  *
  */
 public class CashRegister {
+    private List<?> denoms;
+
     Float account(List<Denomination> denoms) {
       float totalAmount = 0.0f;
       for (Denomination denomination : denoms) {
@@ -29,5 +31,13 @@ public class CashRegister {
         Float balance = getBalance(totalProducts, payment);
         checkBalance(balance);
         return balance;
+    }
+
+    public Float init(List<Denomination> denoms) {
+        return null;
+    }
+
+    public List<?> getDenoms() {
+        return denoms;
     }
 }

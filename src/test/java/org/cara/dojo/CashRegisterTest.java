@@ -143,5 +143,17 @@ public class CashRegisterTest {
     Assertions.assertThat(amount).isEqualTo(20.26f);
   }
 
+  @Test
+  public void init_cashregister_with_denoms() {
+    // Given
+    List<Denomination> denoms = Arrays.asList(Denomination.PENNY, Denomination.QUARTER, Denomination.TWENTY);
+
+    // When
+    Float amount = cashRegister.init(denoms);
+
+    // Then
+    Assertions.assertThat(cashRegister.getDenoms()).isEqualTo(denoms);
+  }
+
 
 }
