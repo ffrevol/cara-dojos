@@ -9,16 +9,16 @@ import java.util.List;
 import org.fest.assertions.Assertions;
 import org.junit.Test;
 
-public class CashRegister {
+public class CashRegisterTest {
 
   @Test
-  public void notEnoughMoney() {
+  public void balanceWithNotEnoughMoney() {
     // Given
-    Float totalProducts = 50.0f;
-    Float payment = 30.0f;
+    Float totalProductsCost = 50.0f;
+    Float offeredPayment = 30.0f;
 
     // When
-    Float balance = getBalance(totalProducts, payment);
+    Float balance = getBalance(totalProductsCost, offeredPayment);
 
     // Then
     Assertions.assertThat(balance).isEqualTo(-20.0f);
