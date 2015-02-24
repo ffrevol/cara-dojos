@@ -7,9 +7,17 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.fest.assertions.Assertions;
+import org.junit.Before;
 import org.junit.Test;
 
 public class CashRegisterTest {
+
+  private CashRegister cashRegister;
+
+  @Before
+  public void setup() {
+    cashRegister = new CashRegister();
+  }
 
   @Test
   public void compute_balance_with_just_Enough_Money() {
