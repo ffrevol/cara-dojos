@@ -9,3 +9,6 @@
       * order denoms: comparable
       * DONE: Cash register: available denominations
   * removes changes from cash machine + add payments
+
+
+ref: denom test cases
