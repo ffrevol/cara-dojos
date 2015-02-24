@@ -29,6 +29,18 @@ public class CashRegisterTest {
   }
 
   @Test
+  public void returns_single_20_when_extra() {
+    // Given
+    Float totalRequested = 20.0f;
+    List<Denomination> offeredPaymentDenoms = Arrays.asList(Denomination.TWENTY, Denomination.TWENTY);
+
+    //when
+    List<Denomination> resultingChange = cashRegister.getChangeForPayment(totalRequested, offeredPaymentDenoms);
+
+    Assertions.assertThat(resultingChange).isEqualTo(Arrays.asList(Denomination.TWENTY));
+  }
+
+  @Test
   public void compute_balance_with_just_Enough_Money() {
     // Given
     Float totalProducts = 50.0f;
