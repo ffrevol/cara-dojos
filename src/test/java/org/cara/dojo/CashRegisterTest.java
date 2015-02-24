@@ -59,7 +59,7 @@ public class CashRegisterTest {
   }
 
   @Test
-  public void expressDenomination() throws Exception {
+  public void express_denomination_and_currency_value() throws Exception {
       //Given
       Denomination penny = Denomination.PENNY;
       Denomination quarter = Denomination.QUARTER;
@@ -72,7 +72,7 @@ public class CashRegisterTest {
   }
 
   @Test
-  public void countDenomination()
+  public void count_currency_from_list_of_denominations()
   {
     // Given
     List<Denomination> denoms = Arrays.asList(Denomination.PENNY, Denomination.PENNY, Denomination.TWENTY);
