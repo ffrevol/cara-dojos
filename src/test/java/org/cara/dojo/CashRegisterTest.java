@@ -17,11 +17,10 @@ public class CashRegisterTest {
   }
 
   @Test
-  public void change_when_exact_payment() {
+  public void returns_no_change_when_exact_payment_offered() {
     // Given
-    Float totalProducts = 50.0f;
-    Float payment = 50.0f;
-    List<Denomination> offeredPaymentDenoms = Arrays.asList(Denomination.PENNY, Denomination.PENNY, Denomination.TWENTY);
+    Float totalProducts = 20.0f;
+    List<Denomination> offeredPaymentDenoms = Arrays.asList(Denomination.TWENTY);
 
     //when
     List<Denomination> resultingChange = cashRegister.getChangeForPayment(totalProducts, offeredPaymentDenoms);
