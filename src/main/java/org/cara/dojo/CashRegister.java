@@ -58,6 +58,17 @@ public class CashRegister {
     }
 
     public List<Denomination> getChangeAsDenoms(Float dueChange) {
-        return denoms;
+
+  	  ArrayList<Denomination> change = new ArrayList<Denomination>();
+
+        if (dueChange > 0f) {
+            for (Denomination cashDenom : this.denoms) {
+                if (dueChange - cashDenom.amount() >= 0f) {
+                    change.add(cashDenom);
+                    dueChange -= cashDenom.amount();
+                }
+            }
+        }
+          return change;
     }
 }
