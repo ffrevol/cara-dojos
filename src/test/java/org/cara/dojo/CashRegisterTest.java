@@ -225,7 +225,7 @@ public class CashRegisterTest {
 	    cashRegister.sortCash();
 
 	    // Then
-	    assertThat(cashRegister.getDenoms()).isEqualTo(asList(Denomination.PENNY,Denomination.QUARTER, Denomination.TWENTY));
+	    assertThat(cashRegister.getDenoms()).isEqualTo(asList(Denomination.TWENTY,Denomination.QUARTER, Denomination.PENNY));
 	  }
 
 }

@@ -80,7 +80,7 @@ public class CashRegister {
 	        public int compare(Denomination  den1, Denomination  den2)
 	        {
 
-	            return Math.round(den1.amount()-den2.amount());
+	            return Math.round(den2.amount()*100-den1.amount()*100);
 	            
 	        }
 	    });
