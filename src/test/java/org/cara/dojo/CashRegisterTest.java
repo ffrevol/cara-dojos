@@ -52,6 +52,17 @@ public class CashRegisterTest {
   }
 
   @Test
+  public void get_change_denoms_change_25_cash_20_1_5() {
+    cashRegister.init(asList(Denomination.TWENTY, Denomination.ONE, Denomination.FIVE, Denomination.FIVE));
+    Float due = 25f;
+
+    List<Denomination> changeAsDenoms = cashRegister.getChangeAsDenoms(due);
+
+    assertThat(changeAsDenoms).isEqualTo(asList(Denomination.TWENTY, Denomination.FIVE));
+  }
+
+  
+  @Test
   public void returns_single_20_when_extra_bill_exactly_matches_expected_change() {
     // Given
     Float totalRequested = 20.0f;
