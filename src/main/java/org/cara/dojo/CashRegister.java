@@ -1,6 +1,8 @@
 package org.cara.dojo;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -71,5 +73,17 @@ public class CashRegister {
         }
           return change;
     }
+
+	public void sortCash() {
+	 	Collections.sort(this.denoms, new Comparator<Denomination>() {
+	        @Override
+	        public int compare(Denomination  den1, Denomination  den2)
+	        {
+
+	            return Math.round(den1.amount()-den2.amount());
+	            
+	        }
+	    });
+	}
 
 }
