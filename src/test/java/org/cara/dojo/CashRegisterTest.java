@@ -214,6 +214,17 @@ public class CashRegisterTest {
     // Then
     assertThat(cashRegister.getDenoms()).isEqualTo(denoms);
   }
+  
+  public void init_cashregister_sorted_collection() {
+	    // Given
+	    List<Denomination> denoms = asList(Denomination.PENNY, Denomination.TWENTY,Denomination.QUARTER);
 
+	    // When
+	    cashRegister.init(denoms);
+	    cashRegister.sortCash();
+
+	    // Then
+	    assertThat(cashRegister.getDenoms()).isEqualTo(asList(Denomination.PENNY,Denomination.QUARTER, Denomination.TWENTY));
+	  }
 
 }
